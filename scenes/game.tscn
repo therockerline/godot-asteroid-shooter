@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://dvertvuwteee5"]
+
+[ext_resource type="PackedScene" uid="uid://tvrwfoe6x63i" path="res://scenes/WorldBoundary/world_boundary.tscn" id="1_ekjm5"]
+[ext_resource type="Script" path="res://scenes/game.gd" id="1_gf4ok"]
+[ext_resource type="PackedScene" uid="uid://b8yhfea4l01jq" path="res://scenes/Player/player.tscn" id="2_e1l6t"]
+[ext_resource type="PackedScene" uid="uid://h5cfnf3hdj4d" path="res://scenes/Spawner/spawner.tscn" id="4_de5ch"]
+[ext_resource type="PackedScene" uid="uid://d1okgsel6lr0b" path="res://scenes/ParallaxBackground/parallax_background.tscn" id="5_ysgs4"]
+[ext_resource type="PackedScene" uid="uid://by1rs3ikhs3py" path="res://scenes/UI/ui.tscn" id="6_h7au0"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_gf4ok")
+
+[node name="GameContainer" type="Node" parent="."]
+
+[node name="Boundary" parent="GameContainer" instance=ExtResource("1_ekjm5")]
+
+[node name="Spawner" parent="GameContainer" instance=ExtResource("4_de5ch")]
+
+[node name="BulletPool" type="Node2D" parent="GameContainer"]
+
+[node name="Player" parent="GameContainer" instance=ExtResource("2_e1l6t")]
+
+[node name="ParallaxBackground" parent="GameContainer" instance=ExtResource("5_ysgs4")]
+
+[node name="UI" parent="." instance=ExtResource("6_h7au0")]
+
+[connection signal="change_life" from="GameContainer/Player" to="UI" method="_on_player_change_life"]
+[connection signal="change_score" from="GameContainer/Player" to="UI" method="_on_player_change_score"]
+[connection signal="change_velocity" from="GameContainer/Player" to="GameContainer/Spawner" method="_on_player_change_velocity"]
+[connection signal="on_destroy" from="GameContainer/Player" to="." method="_on_player_on_destroy"]
+[connection signal="on_destroy" from="GameContainer/Player" to="UI" method="_on_player_on_destroy"]
+[connection signal="exit_button_clicked" from="UI" to="." method="_on_ui_exit_button_clicked"]
+[connection signal="retry_button_clicked" from="UI" to="." method="_on_ui_retry_button_clicked"]

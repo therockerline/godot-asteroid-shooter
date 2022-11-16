@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://i1cl07amnuhj"]
+
+[ext_resource type="Texture2D" uid="uid://5abatn5imjw8" path="res://assets/16ShipCollection.png" id="1_yljax"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hi82c"]
+atlas = ExtResource("1_yljax")
+region = Rect2(248, 402, 15.8544, 15.8461)
+
+[node name="TextureRect" type="TextureRect"]
+offset_right = 23.0
+offset_bottom = 22.0
+size_flags_horizontal = 3
+texture = SubResource("AtlasTexture_hi82c")
+stretch_mode = 5

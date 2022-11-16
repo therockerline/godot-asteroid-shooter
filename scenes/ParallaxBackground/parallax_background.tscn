@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1okgsel6lr0b"]
+
+[ext_resource type="Script" path="res://scenes/ParallaxBackground/ParallaxBackground.gd" id="1_tkkuu"]
+[ext_resource type="Texture2D" uid="uid://m28xvc88inng" path="res://assets/nebulawetstars.png" id="2_1dtxl"]
+[ext_resource type="Texture2D" uid="uid://8vr7b70db4dg" path="res://assets/Gamedevtuts_Free_Shmup_Sprites/Backgrounds/starfield.png" id="3_gdr4l"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+script = ExtResource("1_tkkuu")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(245, 245)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(64, 120)
+scale = Vector2(0.0601562, 0.0601562)
+texture = ExtResource("2_1dtxl")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(410, 295)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer2"]
+position = Vector2(64, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_gdr4l")

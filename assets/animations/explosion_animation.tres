@@ -1,0 +1,31 @@
+[gd_resource type="SpriteFrames" load_steps=7 format=3 uid="uid://cvlx8fdsgy4vt"]
+
+[ext_resource type="Texture2D" uid="uid://5abatn5imjw8" path="res://assets/16ShipCollection.png" id="1_w4cee"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vtfys"]
+atlas = ExtResource("1_w4cee")
+region = Rect2(281, 468, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ideij"]
+atlas = ExtResource("1_w4cee")
+region = Rect2(261, 468, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_natp2"]
+atlas = ExtResource("1_w4cee")
+region = Rect2(241, 468, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4fum"]
+atlas = ExtResource("1_w4cee")
+region = Rect2(221, 468, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3iwr"]
+atlas = ExtResource("1_w4cee")
+region = Rect2(201, 468, 16, 16)
+
+[resource]
+animations = [{
+"frames": [SubResource("AtlasTexture_vtfys"), SubResource("AtlasTexture_ideij"), SubResource("AtlasTexture_natp2"), SubResource("AtlasTexture_y4fum"), SubResource("AtlasTexture_q3iwr")],
+"loop": false,
+"name": &"default",
+"speed": 30.0
+}]

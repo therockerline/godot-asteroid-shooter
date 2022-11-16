@@ -1,0 +1,91 @@
+[gd_scene load_steps=2 format=3 uid="uid://by1rs3ikhs3py"]
+
+[ext_resource type="Script" path="res://scenes/UI/ui.gd" id="1_oaaig"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oaaig")
+
+[node name="Score" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.046875
+anchor_top = 0.0176211
+anchor_right = 0.945313
+anchor_bottom = 0.092511
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 10
+text = "o"
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="LifeContainer" type="HBoxContainer" parent="."]
+layout_direction = 2
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = -26.0
+offset_right = -25.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+metadata/_edit_group_ = true
+
+[node name="GameOverScreen" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -54.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverScreen"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -56.5
+offset_right = 46.0
+offset_bottom = 30.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="GameOverScreen/VBoxContainer"]
+offset_right = 92.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "GAME OVER"
+
+[node name="Retry" type="Button" parent="GameOverScreen/VBoxContainer"]
+anchors_preset = -1
+offset_top = 30.0
+offset_right = 92.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 10
+action_mode = 0
+text = "Retry"
+
+[node name="Exit" type="Button" parent="GameOverScreen/VBoxContainer"]
+offset_top = 56.0
+offset_right = 92.0
+offset_bottom = 87.0
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 10
+text = "Exit"
+
+[connection signal="button_down" from="GameOverScreen/VBoxContainer/Retry" to="." method="_on_game_over_button_down"]
+[connection signal="button_down" from="GameOverScreen/VBoxContainer/Exit" to="." method="_on_exit_button_down"]

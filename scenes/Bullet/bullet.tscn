@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://dpvrf0ghbwjfr"]
+
+[ext_resource type="Script" path="res://scenes/Bullet/bullet.gd" id="1_ibxdu"]
+[ext_resource type="Texture2D" uid="uid://5abatn5imjw8" path="res://assets/16ShipCollection.png" id="2_pntjr"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_d5p6m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6x78b"]
+size = Vector2(0.5, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0esk"]
+atlas = ExtResource("2_pntjr")
+region = Rect2(282, 469, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1mpgv"]
+atlas = ExtResource("2_pntjr")
+region = Rect2(262, 469, 14, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qd031"]
+animations = [{
+"frames": [SubResource("AtlasTexture_c0esk"), SubResource("AtlasTexture_1mpgv")],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="Bullet" type="RigidBody2D"]
+collision_mask = 0
+gravity_scale = 0.0
+contact_monitor = true
+lock_rotation = true
+script = ExtResource("1_ibxdu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0.894118, 0.894118, 1)
+scale = Vector2(0.5, 4)
+texture = SubResource("CanvasTexture_d5p6m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6x78b")
+
+[node name="Explosion" type="AnimatedSprite2D" parent="."]
+visible = false
+scale = Vector2(0.285714, 0.285714)
+frames = SubResource("SpriteFrames_qd031")

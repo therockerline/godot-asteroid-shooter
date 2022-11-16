@@ -1,0 +1,78 @@
+[gd_scene load_steps=5 format=3 uid="uid://tvrwfoe6x63i"]
+
+[ext_resource type="Script" path="res://scenes/WorldBoundary/world_boundary.gd" id="1_fmshi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fbvqf"]
+size = Vector2(600, 8)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_2jpm2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ap4qc"]
+size = Vector2(8, 600)
+
+[node name="Boundary" type="Node2D"]
+script = ExtResource("1_fmshi")
+
+[node name="BottomBoundary" type="Area2D" parent="."]
+position = Vector2(64, 253)
+metadata/_edit_group_ = true
+
+[node name="Collision" type="CollisionShape2D" parent="BottomBoundary"]
+shape = SubResource("RectangleShape2D_fbvqf")
+one_way_collision_margin = 16.0
+
+[node name="Sprite2D2" type="Sprite2D" parent="BottomBoundary"]
+scale = Vector2(124, 5.5)
+texture = SubResource("CanvasTexture_2jpm2")
+
+[node name="UpBoundary" type="Area2D" parent="."]
+position = Vector2(64, -20)
+metadata/_edit_group_ = true
+
+[node name="Collision" type="CollisionShape2D" parent="UpBoundary"]
+shape = SubResource("RectangleShape2D_fbvqf")
+one_way_collision_margin = 16.0
+
+[node name="Sprite2D" type="Sprite2D" parent="UpBoundary"]
+position = Vector2(0, 0.25)
+scale = Vector2(124, 5.5)
+texture = SubResource("CanvasTexture_2jpm2")
+
+[node name="LeftBoundary" type="StaticBody2D" parent="."]
+position = Vector2(-6, 192)
+collision_layer = 2
+collision_mask = 2
+metadata/_edit_group_ = true
+
+[node name="Collision" type="CollisionShape2D" parent="LeftBoundary"]
+shape = SubResource("RectangleShape2D_ap4qc")
+
+[node name="LeftClearBoundary" type="Area2D" parent="."]
+position = Vector2(-100, 192)
+metadata/_edit_group_ = true
+
+[node name="Collision" type="CollisionShape2D" parent="LeftClearBoundary"]
+shape = SubResource("RectangleShape2D_ap4qc")
+one_way_collision_margin = 16.0
+
+[node name="RightBoundary" type="StaticBody2D" parent="."]
+position = Vector2(134, 192)
+collision_layer = 2
+collision_mask = 2
+metadata/_edit_group_ = true
+
+[node name="Collision" type="CollisionShape2D" parent="RightBoundary"]
+shape = SubResource("RectangleShape2D_ap4qc")
+
+[node name="RightClearBoundary" type="Area2D" parent="."]
+position = Vector2(228, 192)
+metadata/_edit_group_ = true
+
+[node name="Collision" type="CollisionShape2D" parent="RightClearBoundary"]
+shape = SubResource("RectangleShape2D_ap4qc")
+one_way_collision_margin = 16.0
+
+[connection signal="body_entered" from="BottomBoundary" to="." method="_on_bottom_boundary_body_entered"]
+[connection signal="body_entered" from="UpBoundary" to="." method="_on_up_boundary_body_entered"]
+[connection signal="body_entered" from="LeftClearBoundary" to="." method="_on_left_clear_boundary_body_entered"]
+[connection signal="body_entered" from="RightClearBoundary" to="." method="_on_right_clear_boundary_body_entered"]

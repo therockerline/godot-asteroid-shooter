@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://ddlq0xr6xm656"]
+
+[ext_resource type="Script" path="res://scenes/Asteroid/asteroid.gd" id="1_gk4v1"]
+[ext_resource type="Texture2D" uid="uid://dfu7f6b5uboy3" path="res://scenes/Asteroid/asteroid_sprite_resource.tres" id="2_p0vng"]
+[ext_resource type="SpriteFrames" uid="uid://cvlx8fdsgy4vt" path="res://assets/animations/explosion_animation.tres" id="3_4x0tl"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0vy5l"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lsioi"]
+radius = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pt7mh"]
+radius = 4.0
+
+[node name="Asteroid" type="RigidBody2D"]
+material = SubResource("CanvasItemMaterial_0vy5l")
+collision_mask = 0
+linear_damp = -1.0
+angular_damp = -1.0
+script = ExtResource("1_gk4v1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_lsioi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_p0vng")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_pt7mh")
+
+[node name="Explosion" type="AnimatedSprite2D" parent="."]
+visible = false
+frames = ExtResource("3_4x0tl")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
